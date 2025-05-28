@@ -806,15 +806,6 @@ form a {
         margin-left: 10px;
         font-size: 20px;
     }
-    .header,
-    .home,
-    .about,
-    .service,
-    .skillls,
-    .projects,
-    .contact{
-        width: 100%;
-    }
 
     .home {
         flex-direction: column;
