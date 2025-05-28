@@ -229,7 +229,7 @@ body{
 }
 .home-img img{
     /* border-radius: 60%; */
-    height: 450PX;
+    height: 200PX;
     width: 400PX;
     margin: 70PX;
     /* padding:40PX; */
@@ -713,7 +713,7 @@ form a {
     padding: 10px;
 }
 .hire-card a:hover{
-    box-shadow: 0 0 10px white;
+    /* box-shadow: 0 0 10px white; */
 }
 
 
@@ -755,7 +755,7 @@ form a {
 /* Responsive for tablets and smaller desktops (max-width: 1200px) */
 @media (max-width: 1200px) {
     .home-content h1 {
-        font-size: 48px;
+        font-size: 45px;
     }
 
     .home-content h3 {
@@ -800,11 +800,20 @@ form a {
     }
 }
 
-/* Responsive for mobile devices (max-width: 767px) */
-@media (max-width: 767px) {
+/* Responsive for mobile devices (max-width: 767px) */ 
+ @media (max-width: 767px) {
     .navbar a {
         margin-left: 10px;
         font-size: 20px;
+    }
+    .header,
+    .home,
+    .about,
+    .service,
+    .skillls,
+    .projects,
+    .contact{
+        width: 100%;
     }
 
     .home {
@@ -868,3 +877,5 @@ form a {
         padding: 10px;
     }
 }
+
+
