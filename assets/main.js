@@ -50,20 +50,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   const toggle = document.getElementById('menu-toggle');
   const navbar = document.getElementById('navbar');
   const navLinks = document.querySelectorAll('.nav-link');
