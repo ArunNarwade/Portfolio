@@ -10,12 +10,27 @@ body{
     color: #ededed;
     background: #081b29;
 }
+body::before {
+  content: "AN";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18rem;
+  font-weight: 900;
+  background: linear-gradient(45deg, #38bdf8, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.05; 
+  z-index: 0; 
+  user-select: none;
+  pointer-events: none;
+}
 
 
 
 
 
-/* Base styles */
 .header {
   position: fixed;
   top: 0;
@@ -40,27 +55,10 @@ body{
   animation: slideRight 0.5s ease forwards;
 }
 
-/* Navigation Links */
-.navbar {
-  display: flex;
-  gap: 20px;
-}
 
-.navbar a {
-  color: #0ef;
-  text-decoration: none;
-  font-size: 18px;
-  transition: 0.3s;
-  opacity: 0;
-  animation: slideTop 0.5s ease forwards;
-  animation-delay: calc(var(--i) * 0.1s);
-}
 
-.navbar a:hover {
-  color: #fff;
-}
 
-/* Hamburger Menu Icon */
+
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -75,7 +73,7 @@ body{
   transition: 0.4s;
 }
 
-/* Responsive Styles */
+
 @media (max-width: 768px) {
   .menu-toggle {
     display: flex;
@@ -105,7 +103,7 @@ body{
   }
 }
 
-/* Animations */
+
 @keyframes slideRight {
   0% {
     transform: translateX(-100px);
@@ -145,8 +143,26 @@ body{
     opacity: 0;
     animation: slideTop .5s ease forwards ;
 }
+
+
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background: #38bdf8;
+  transition: 0.3s ease;
+}
+
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
 .navbar a:hover{
-    color: rgb(78, 247, 21);
+    color: rgb(128, 151, 120);
 }
 .home{
     position: relative;
@@ -228,11 +244,11 @@ body{
     box-shadow: 0 0 10px cyan;
 }
 .home-img img{
-    /* border-radius: 60%; */
+
     height: 200PX;
     width: 400PX;
     margin: 70PX;
-    /* padding:40PX; */
+ 
     max-width: 630px;
     height: auto;
     border-radius: 50%;
@@ -250,11 +266,10 @@ body{
     gap: 1.5rem;
 }
 .about-img img{
-    /* border-radius: 60%; */
+ 
     height: 450PX;
     width: 450PX;
     margin: 70PX;
-    /* padding:40PX; */
     max-width: 630px;
     height: auto;
     border-radius: 50%;
@@ -311,7 +326,7 @@ body{
 }
 .service-list div{
     background-color: transparent;
-    /* width: 250px; */
+ 
     padding: 40px;
     font-size: 13px;
     font-weight: 600;
@@ -399,7 +414,6 @@ section{
     margin: 20px ;
     padding: 10px;
     text-align: left;
-    /* width: 50%; */
 }
 .skill-name {
     font-family: "Montserrat", serif;
@@ -440,7 +454,7 @@ section{
     margin: auto;
     justify-content: center;
     align-items: center;
-    /* background: #1e1e1e; */
+    
     padding: 20px;
 }
 .progress-container h2{
@@ -455,14 +469,13 @@ section{
     padding: 20px;
     justify-content: center;
     align-items: center;
-    /* width: 120px; */
+  
     height: 120px;
 }
 
 .circle-svg {
     transform: rotate(-90deg);
-    /* border-radius: 50%; */
-    /* background-color: #000; */
+   
 }
 
 .circle-bg {
@@ -503,7 +516,7 @@ section{
 
 .projects-container {
     width: 100%;
-    /* scroll-padding: 20; */
+ 
     align-items: center;
     display: flex;
     gap: 20px;
@@ -546,7 +559,7 @@ section{
 }
 
 .card-back {
-    /* background-color:red; */
+   
     background-image: linear-gradient(45deg , black, red,black);
     color: white;
     padding: 20px;
@@ -567,7 +580,7 @@ section{
     opacity: 1;
     visibility: visible;
     transform: scale(1.1);
-    /* transform: rotateX(450deg); */
+  
 }
 
 .card-front img {
@@ -712,9 +725,6 @@ form a {
 .hire-card a{
     padding: 10px;
 }
-.hire-card a:hover{
-    /* box-shadow: 0 0 10px white; */
-}
 
 
 
@@ -752,7 +762,7 @@ form a {
     }
 }
 
-/* Responsive for tablets and smaller desktops (max-width: 1200px) */
+
 @media (max-width: 1200px) {
     .home-content h1 {
         font-size: 45px;
@@ -800,7 +810,7 @@ form a {
     }
 }
 
-/* Responsive for mobile (max-width: 767px) */ 
+
  @media (max-width: 767px) {
     .navbar a {
         margin-left: 10px;
@@ -868,5 +878,58 @@ form a {
         padding: 10px;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
 
 
