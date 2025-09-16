@@ -54,12 +54,12 @@ document.addEventListener("DOMContentLoaded", function() {
   const navbar = document.getElementById('navbar');
   const navLinks = document.querySelectorAll('.nav-link');
 
-  // Toggle menu open/close
+
   toggle.addEventListener('click', () => {
     navbar.classList.toggle('active');
   });
 
-  // Close menu when any link is clicked
+  
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       navbar.classList.remove('active');
