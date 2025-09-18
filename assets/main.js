@@ -47,9 +47,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
-
-
   const toggle = document.getElementById('menu-toggle');
   const navbar = document.getElementById('navbar');
   const navLinks = document.querySelectorAll('.nav-link');
@@ -66,4 +63,34 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
+
+(function(){
+  const track = document.getElementById('track');
+  const gap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gap')) || 16;
+  const cards = Array.from(track.children);
+  cards.forEach(c => track.appendChild(c.cloneNode(true)));
+  let autoSlide = true;
+  function slideOneCard(){
+    if(!autoSlide) return;
+    const firstCard = track.querySelector('.card');
+    const cardWidth = firstCard.offsetWidth + gap;
+    track.style.transition = 'transform 0.5s ease';
+    track.style.transform = `translateX(-${cardWidth}px)`;
+    track.addEventListener('transitionend', function handler(){
+      track.style.transition = 'none';
+      track.appendChild(firstCard);
+      track.style.transform = 'translateX(0)';
+      track.removeEventListener('transitionend', handler);
+    });
+  }
+  let interval = setInterval(slideOneCard, 3000);
+  track.addEventListener('mouseenter', ()=> autoSlide=false);
+  track.addEventListener('mouseleave', ()=> autoSlide=true); 
+  document.getElementById('nextBtan').addEventListener('click', slideOneCard);
+  document.getElementById('prevBtan').addEventListener('click', ()=>{
+    const cardsAll = track.querySelectorAll('.card');
+    const lastCard = cardsAll[cardsAll.length-1];
+    track.insertBefore(lastCard, track.firstChild);
+  });
+})();
 
