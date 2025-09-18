@@ -63,34 +63,69 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-
-(function(){
-  const track = document.getElementById('track');
-  const gap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gap')) || 16;
+(function () {
+  const track = document.getElementById("track");
+  const gap = parseFloat(
+    getComputedStyle(document.documentElement).getPropertyValue("--gap")
+  ) || 16;
   const cards = Array.from(track.children);
-  cards.forEach(c => track.appendChild(c.cloneNode(true)));
+
+  // Duplicate cards for seamless looping
+  cards.forEach((c) => track.appendChild(c.cloneNode(true)));
+
   let autoSlide = true;
-  function slideOneCard(){
-    if(!autoSlide) return;
-    const firstCard = track.querySelector('.card');
-    const cardWidth = firstCard.offsetWidth + gap;
-    track.style.transition = 'transform 0.5s ease';
+
+  function getCardWidth() {
+    const firstCard = track.querySelector(".card");
+    return firstCard ? firstCard.offsetWidth + gap : 0;
+  }
+
+  function slideNext() {
+    if (!autoSlide) return;
+    const firstCard = track.querySelector(".card");
+    const cardWidth = getCardWidth();
+
+    track.style.transition = "transform 0.5s ease";
     track.style.transform = `translateX(-${cardWidth}px)`;
-    track.addEventListener('transitionend', function handler(){
-      track.style.transition = 'none';
-      track.appendChild(firstCard);
-      track.style.transform = 'translateX(0)';
-      track.removeEventListener('transitionend', handler);
+
+    track.addEventListener(
+      "transitionend",
+      function handler() {
+        track.style.transition = "none";
+        track.appendChild(firstCard);
+        track.style.transform = "translateX(0)";
+        track.removeEventListener("transitionend", handler);
+      },
+      { once: true }
+    );
+  }
+
+
+  
+  function slidePrev() {
+    const cardsAll = track.querySelectorAll(".card");
+    const lastCard = cardsAll[cardsAll.length - 1];
+    const cardWidth = getCardWidth();
+
+    track.style.transition = "none";
+    track.insertBefore(lastCard, track.firstChild);
+    track.style.transform = `translateX(-${cardWidth}px)`;
+
+    requestAnimationFrame(() => {
+      track.style.transition = "transform 0.5s ease";
+      track.style.transform = "translateX(0)";
     });
   }
-  let interval = setInterval(slideOneCard, 3000);
-  track.addEventListener('mouseenter', ()=> autoSlide=false);
-  track.addEventListener('mouseleave', ()=> autoSlide=true); 
-  document.getElementById('nextBtan').addEventListener('click', slideOneCard);
-  document.getElementById('prevBtan').addEventListener('click', ()=>{
-    const cardsAll = track.querySelectorAll('.card');
-    const lastCard = cardsAll[cardsAll.length-1];
-    track.insertBefore(lastCard, track.firstChild);
+
+  let interval = setInterval(slideNext, 3000);
+
+  track.addEventListener("mouseenter", () => (autoSlide = false));
+  track.addEventListener("mouseleave", () => (autoSlide = true));
+
+  document.getElementById("nextBtan").addEventListener("click", slideNext);
+  document.getElementById("prevBtan").addEventListener("click", slidePrev);
+  window.addEventListener("resize", () => {
+    track.style.transition = "none";
+    track.style.transform = "translateX(0)";
   });
 })();
-
