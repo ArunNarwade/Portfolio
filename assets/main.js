@@ -1,142 +1,176 @@
+// ==========================================
+// 1. HERO TYPED EFFECT
+// ==========================================
 var typed = new Typed(".text", {
-    strings: ["Front-end Developer", "YouTuber", "Web Developer","Vloger"],
+    strings: ["Front-end Developer", "YouTuber", "Web Developer", "Vlogger"],
     typeSpeed: 90,
     backSpeed: 20,
     backDelay: 1000,  
     loop: true
 });
 
-
+// ==========================================
+// 2. INITIALIZE SKILLS (BARS & CIRCLES)
+// ==========================================
 document.addEventListener("DOMContentLoaded", function() {
-    let progressBars = document.querySelectorAll(".progress");
-    
+    // A. Animate Linear Progress Bars
+    const progressBars = document.querySelectorAll(".progress");
+    const skillWidths = {
+        html: "95%",
+        css: "90%",
+        js: "85%",
+        react: "80%",
+        python: "75%"
+    };
+
     progressBars.forEach(bar => {
-       
-        let width = 
-            bar.classList.contains("html") ? "95%" :
-            bar.classList.contains("css") ? "90%" :
-            bar.classList.contains("js") ? "85%" :
-            bar.classList.contains("react") ? "80%" :
-            bar.classList.contains("python") ? "75%" : "0";
+        // Find which skill class the bar matches, default to 0% if none
+        const skillClass = Object.keys(skillWidths).find(key => bar.classList.contains(key));
+        const targetWidth = skillClass ? skillWidths[skillClass] : "0%";
         
-        
-        requestAnimationFrame(() => {
-            
-            setTimeout(() => {
-                bar.style.width = width;
-            }, 500);
-        });
+        // Clean, modern micro-timeout for CSS transition triggers
+        setTimeout(() => {
+            bar.style.width = targetWidth;
+        }, 300);
     });
-});
 
-
-document.addEventListener("DOMContentLoaded", function() {
-    let circles = document.querySelectorAll('.circle');
+    // B. Animate Circular Progress Skills
+    const circles = document.querySelectorAll('.circle');
+    const circumference = 339.292;
     
     circles.forEach(circle => {
-        const progress = circle.getAttribute('data-skill'); 
-        const circumference = 339.292;
+        const progress = parseFloat(circle.getAttribute('data-skill')) || 0; 
         const offset = circumference - (progress / 100) * circumference;
 
         const progressCircle = circle.querySelector('.circle-progress');
-        progressCircle.style.strokeDashoffset = offset;
+        if (progressCircle) {
+            progressCircle.style.strokeDashoffset = offset;
+        }
 
-       
         const skillText = circle.querySelector('.skill-text');
-        skillText.innerHTML = `${progress}%`;
+        if (skillText) {
+            skillText.innerHTML = `${progress}%`;
+        }
     });
 });
 
-  const toggle = document.getElementById('menu-toggle');
-  const navbar = document.getElementById('navbar');
-  const navLinks = document.querySelectorAll('.nav-link');
+// ==========================================
+// 3. MOBILE NAVIGATION MENU LOGIC
+// ==========================================
+const toggle = document.getElementById('menu-toggle');
+const navbar = document.getElementById('navbar');
+const navLinks = document.querySelectorAll('.nav-link');
 
-
-  toggle.addEventListener('click', () => {
-    navbar.classList.toggle('active');
-  });
-
-  
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      navbar.classList.remove('active');
+if (toggle && navbar) {
+    toggle.addEventListener('click', () => {
+        navbar.classList.toggle('active');
     });
-  });
 
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navbar.classList.remove('active');
+        });
+    });
+}
+
+// ==========================================
+// 4. INFINITE CAROUSEL SLIDER ENGINE
+// ==========================================
 (function () {
-  const track = document.getElementById("track");
-  const gap = parseFloat(
-    getComputedStyle(document.documentElement).getPropertyValue("--gap")
-  ) || 16;
-  const cards = Array.from(track.children);
+    const track = document.getElementById("track");
+    if (!track) return;
 
-  // Duplicate cards for seamless looping
-  cards.forEach((c) => track.appendChild(c.cloneNode(true)));
+    const gap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--gap")) || 16;
+    const cards = Array.from(track.children);
 
-  let autoSlide = true;
+    // Clone initial cards to set up seamless loop sequence
+    cards.forEach(c => track.appendChild(c.cloneNode(true)));
 
-  function getCardWidth() {
-    const firstCard = track.querySelector(".card");
-    return firstCard ? firstCard.offsetWidth + gap : 0;
-  }
+    let autoSlide = true;
 
-  function slideNext() {
-    if (!autoSlide) return;
-    const firstCard = track.querySelector(".card");
-    const cardWidth = getCardWidth();
+    function getCardWidth() {
+        const firstCard = track.querySelector(".card");
+        return firstCard ? firstCard.offsetWidth + gap : 0;
+    }
 
-    track.style.transition = "transform 0.5s ease";
-    track.style.transform = `translateX(-${cardWidth}px)`;
+    function slideNext() {
+        const firstCard = track.querySelector(".card");
+        const cardWidth = getCardWidth();
+        if (!firstCard || cardWidth === 0) return;
 
-    track.addEventListener(
-      "transitionend",
-      function handler() {
+        track.style.transition = "transform 0.5s ease";
+        track.style.transform = `translateX(-${cardWidth}px)`;
+
+        track.addEventListener("transitionend", function handler() {
+            track.style.transition = "none";
+            track.appendChild(firstCard);
+            track.style.transform = "translateX(0)";
+            track.removeEventListener("transitionend", handler);
+        }, { once: true });
+    }
+
+    function slidePrev() {
+        const cardsAll = track.querySelectorAll(".card");
+        const lastCard = cardsAll[cardsAll.length - 1];
+        const cardWidth = getCardWidth();
+        if (!lastCard || cardWidth === 0) return;
+
         track.style.transition = "none";
-        track.appendChild(firstCard);
+        track.insertBefore(lastCard, track.firstChild);
+        track.style.transform = `translateX(-${cardWidth}px)`;
+
+        requestAnimationFrame(() => {
+            track.style.transition = "transform 0.5s ease";
+            track.style.transform = "translateX(0)";
+        });
+    }
+
+    // Interval driver logic
+    let interval = setInterval(() => {
+        if (autoSlide) slideNext();
+    }, 3000);
+
+    // Pause on hovering over the track
+    track.addEventListener("mouseenter", () => autoSlide = false);
+    track.addEventListener("mouseleave", () => autoSlide = true);
+
+    // Navigation Buttons Hookups (Fixed matching IDs)
+    const nextBtn = document.getElementById("nextBtn");
+    const prevBtn = document.getElementById("prevBtn");
+
+    if (nextBtn) nextBtn.addEventListener("click", slideNext);
+    if (prevBtn) prevBtn.addEventListener("click", slidePrev);
+
+    window.addEventListener("resize", () => {
+        track.style.transition = "none";
         track.style.transform = "translateX(0)";
-        track.removeEventListener("transitionend", handler);
-      },
-      { once: true }
-    );
-  }
-
-
-  
-  function slidePrev() {
-    const cardsAll = track.querySelectorAll(".card");
-    const lastCard = cardsAll[cardsAll.length - 1];
-    const cardWidth = getCardWidth();
-
-    track.style.transition = "none";
-    track.insertBefore(lastCard, track.firstChild);
-    track.style.transform = `translateX(-${cardWidth}px)`;
-
-    requestAnimationFrame(() => {
-      track.style.transition = "transform 0.5s ease";
-      track.style.transform = "translateX(0)";
     });
-  }
-
-  let interval = setInterval(slideNext, 3000);
-
-  track.addEventListener("mouseenter", () => (autoSlide = false));
-  track.addEventListener("mouseleave", () => (autoSlide = true));
-
-  document.getElementById("nextBtan").addEventListener("click", slideNext);
-  document.getElementById("prevBtan").addEventListener("click", slidePrev);
-  window.addEventListener("resize", () => {
-    track.style.transition = "none";
-    track.style.transform = "translateX(0)";
-  });
 })();
 
 
 
-window.addEventListener('scroll', function() {
-  const header = document.querySelector('.header');
-  if (window.scrollY > 50) {
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-  }
+const observerOptions = {
+  root: null, // Uses the viewport
+  rootMargin: '0px',
+  threshold: 0.1 // Triggers when 10% of the element is visible
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // Fades in when scrolling down into view
+      entry.target.classList.add('is-visible');
+    } else {
+      // Optional: Remove this line if you want the element to stay visible forever once revealed
+      entry.target.classList.remove('is-visible'); 
+    }
+  });
+}, observerOptions);
+
+// Target all elements you want to animate
+document.querySelectorAll('.fade-in-element').forEach(element => {
+  observer.observe(element);
 });
+
+
+

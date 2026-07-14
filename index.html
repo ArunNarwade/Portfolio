@@ -33,7 +33,7 @@
     </header>
 
     <!-- //////HEADERRRRRR -->
-    <section class="home" id="homee">
+    <section class="home " id="homee">
         <div class="home-content" id="home">
             <h3>Hello, It's Me</h3>
             <h1>Arun Narwade</h1>
@@ -58,7 +58,7 @@
 
      <!-- <!......//////SECTIONNNNNNN 2 ///////// -->
 
-    <section class="about" id="about">
+    <section class="about fade-in-element" id="about">
         <div class="about-img">
             <img src="./assets/img/Arun2.jpg" alt="bio">
         </div>
@@ -73,39 +73,80 @@
     </section>
     <!-- //SECTIONNNNNNNNNNNNNN 3 -->
 
-    <section>
-        <div class="service" id="service">
-            <div class="container">
-                <h1 class="sub-title">My <span>Services</span></h1><br><br>
-                <div class="service-list">
-                    <div>
-                        <i class="fa-solid fa-code" style="color: #74C0FC;"></i>
-                        <h2>UI/UX Desing</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis molestias vero accusantium sapiente at alias fugit ea labore, atque deserunt.</p>
-                        <a href="" class="read">Learn More</a>
-                    </div>
-                    <div>
-                        <i class="fa-solid fa-crop" style="color: #74C0FC;"></i>
-                        <h2>UI/UX Desing</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis molestias vero accusantium sapiente at alias fugit ea labore, atque deserunt.</p>
-                        <a href="" class="read">Learn More</a>
-                    </div>
-                    <div>
-                        <i class="fa-brands fa-apple" style="color: #74C0FC;"></i>
-                        <h2>UI/UX Desing</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis molestias vero accusantium sapiente at alias fugit ea labore, atque deserunt.</p>
-                        <a href="" class="read">Learn More</a>
-                    </div>
-                   
-                </div>
+
+<section class="services-section fade-in-element ">
+    <div class="services-header">
+        <!-- <h2 class="services-title">Expertise & Services</h2>
+        <p class="services-subtitle">High-performance digital engineering executed with modern production stacks.</p> -->
+    </div>
+
+    <div class="services-grid">
+        
+        <!-- SERVICE CARD 1: FRONTEND -->
+        <article class="service-card">
+            <div class="service-icon-wrapper">
+                <!-- Clean Inline Modern SVG Developer Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+                </svg>
             </div>
-        </div>
-    </section>
+            <h3 class="service-card-title">Front-end Development</h3>
+            <p class="service-card-desc">Building responsive web user interfaces optimized for speed, semantic rendering accessibility, and pixel-precise conversion transitions.</p>
+            <ul class="services-features">
+                <li class="service-feature-item">React / Next.js Architecture</li>
+                <li class="service-feature-item">Tailwind CSS Custom Engineering</li>
+                <li class="service-feature-item">Fluid Core Logic Web Interactions</li>
+            </ul>
+        </article>
+
+        <!-- SERVICE CARD 2: BACKEND/AUTOMATION -->
+        <article class="service-card">
+            <div class="service-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3V5.25m3 9c0 .517.13 1.003.361 1.432m12.778-1.432a3 3 0 013-3V5.25m-3 9c0 .517-.13 1.003-.36 1.432m-12.058 0A4.498 4.498 0 0012 18.75a4.498 4.498 0 004.161-2.924m-12.058 0A1.5 1.5 0 004.5 18a2.25 2.25 0 002.25 2.25h10.5A2.25 2.25 0 0019.5 18a1.5 1.5 0 00-1.398-1.174" />
+                </svg>
+            </div>
+            <h3 class="service-card-title">Backend & Systems</h3>
+            <p class="service-card-desc">Engineered APIs, schema distributions, and automated structural processing servers designed to run safely under heavy request flows.</p>
+            <ul class="services-features">
+                <li class="service-feature-item">Node.js Framework Environments</li>
+                <li class="service-feature-item">Secure RESTful & GraphQL APIs</li>
+                <li class="service-feature-item">Database Architecture Handling</li>
+            </ul>
+        </article>
+
+        <!-- SERVICE CARD 3: CONTENT & BRANDING -->
+        <article class="service-card">
+            <div class="service-icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125z" />
+                </svg>
+            </div>
+            <h3 class="service-card-title">Content & Strategy</h3>
+            <p class="service-card-desc">Producing deeply engaging technical videos, layout walkthroughs, and developer content designed to communicate features cleanly.</p>
+            <ul class="services-features">
+                <li class="service-feature-item">Video Editing & Technical Reviews</li>
+                <li class="service-feature-item">Developer Brand Direction Consulting</li>
+                <li class="service-feature-item">Product Documentation Engineering</li>
+            </ul>
+        </article>
+
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
 
 
     <!-- //SECTIONNNNNNNN 4 -->
-    <h1 class="sub-title">My <span>Skills</span></h1>
-    <section id="skillss" class="skillls">
+    <h1 class="sub-title ">My <span>Skills</span></h1>
+    <section id="skillss" class="skillls fade-in-element">
         <div class="skills-container">
             <h2>Technical Skills</h2>
             <div class="skill">
@@ -190,102 +231,89 @@
     
            
         </div>
-        <section class="projects">
-           <div class="container">
-            <h1 class="sub-title">My <span>Projects</span></h1>
         
-            <div class="projects-container">
-                <div class="project-card">
-                    
-                    <div class="card-front" id="rest">
-                        <img src="./assets/img/rest.webp" alt="Project 1">
-                        
-                        <!-- <h3>Project 1</h3> -->
+        <section class="projects fade-in-element ">
+                <div class="project-section-header">
+            <h2 class="project-section-title">My Work</h2>
+            <p class="project-section-subtitle">From front-end interactions to robust architectures: a look at my recent builds.</p>
+        </div>
+
+        <div class="project-slider-wrapper" id="projectSliderWrapper">
+            <div class="project-slider-track" id="projectSliderTrack">
+                
+                <!-- PROJECT CARD 1 -->
+                <article class="project-card">
+                    <div class="project-visual-box">
+                        <!-- Swap src value placeholder below with your project website screenshot link -->
+                        <img src="assets/img/photography.png" alt="Screenshot of Nova Crypt App" class="project-screenshot">
                     </div>
-                    <div class="card-back">
-                        <div class="info">
-                            <h4>Food Web</h4>
-                            <p>the wesite for foodies , its all about to test</p>
-                            <a href="https://arunnarwade.github.io/food-web/">View Project</a>
+                    <div class="project-content-box">
+                        <div class="project-meta">
+                            <span class="project-tech-tag">HTML 5</span>
+                            <span class="project-tech-tag">JS</span>
                         </div>
+                        <h3 class="project-title">Photo Graphy</h3>
+                        <p class="project-description">A modern, responsive photography portfolio showcasing galleries, services, and smooth interactive animations.</p>
+                        <a href="https://arunnarwade.github.io/PhotoGraphy/" class="project-action-link">Explore Project<span>→</span></a>
                     </div>
-                </div>
-        
-                <div class="project-card">
-                    <div class="card-front">
-                        <img src="./assets/img/bullet.jpeg" alt="Project 2">
-                        <!-- <h3>Project 2</h3> -->
+                </article>
+
+                <!-- PROJECT CARD 2 -->
+                <article class="project-card">
+                    <div class="project-visual-box">
+                        <img src="./assets/img/Foodweb.png" alt="Screenshot of Synthetix Workflows" class="project-screenshot">
                     </div>
-                    <div class="card-back">
-                        <div class="info">
-                            <h4>Royal Enfield</h4>
-                            <p>A Single page website for royal enfield lover</p>
-                            <a href="#">View Project</a>
+                    <div class="project-content-box">
+                        <div class="project-meta">
+                            <span class="project-tech-tag">TypeScript</span>
+                            <span class="project-tech-tag">Node.js</span>
                         </div>
+                        <h3 class="project-title">Food site</h3>
+                        <p class="project-description">A responsive food ordering website featuring an elegant UI, interactive menus, and a seamless user experience.</p>
+                        <a href="https://arunnarwade.github.io/food-web/" class="project-action-link">Explore Project <span>→</span></a>
                     </div>
-                </div>
-        
-                <div class="project-card">
-                    <div class="card-front">
-                        <img src="./assets/img/5431548_839d_3.webp" alt="Project 3">
-                        <!-- <h3>Project 3</h3> -->
+                </article>
+
+                <!-- PROJECT CARD 3 -->
+                <article class="project-card">
+                    <div class="project-visual-box">
+                        <img src="./assets/img/Finance.png" alt="Screenshot of Zenith Wallet UI" class="project-screenshot">
                     </div>
-                    <div class="card-back">
-                        <div class="info">
-                            <h4>Project 3 Details</h4>
-                            <p>This is a detailed description of Project 3.</p>
-                            <a href="#">View Project</a>
+                    <div class="project-content-box">
+                        <div class="project-meta">
+                            <span class="project-tech-tag">React Js</span>
+                            <span class="project-tech-tag">API</span>
                         </div>
+                        <h3 class="project-title">Finance Tracker</h3>
+                        <p class="project-description">A React-based finance tracker for managing income, expenses, and budgets with an intuitive dashboard.</p>
+                        <a href="https://arunnarwade.github.io/Finance/" class="project-action-link">Explore Project <span>→</span></a>
                     </div>
-                </div>
+                </article>
+
+                <!-- PROJECT CARD 4 -->
+                <article class="project-card">
+                    <div class="project-visual-box">
+                        <img src="./assets/img/Infinova.png" alt="Screenshot of Helix Search Platform" class="project-screenshot">
+                    </div>
+                    <div class="project-content-box">
+                        <div class="project-meta">
+                            <span class="project-tech-tag">React.js</span>
+                            <span class="project-tech-tag">--</span>
+                        </div>
+                        <h3 class="project-title">Infinova Consaltants</h3>
+                        <p class="project-description">Contributed to the Infinova Consultants website by developing responsive React components and enhancing the user interface.</p>
+                        <a href="https://www.infinovaglobal.org/" class="project-action-link">Explore Projects <span>→</span></a>
+                    </div>
+                </article>
+
             </div>
-
-           </div>
-
-        </section>
-        <section class="projects">
-
-
-
-            <div class="wrap">
-                    <h1>Team Works With me..</h1>
-                    <div class="carousel">
-                    <div class="viewport">
-                        <div class="track" id="track">
-                            <div class="card">
-                                <img class="avatar" src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=600">
-                                <div class="meta"><h1 class="name">Bhagwan</h1><div class="role"><h3>Product Lead</h3></div><p class="desc">Lorem ipsum dolor sit, sed sint libero itaque reiciendis debitis?</p><div class="tags"><span class="tag">Web Developer</span></div></div>
-                            </div>
-                            <div class="card">
-                                <img class="avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600">
-                                <div class="meta"><h3 class="name"> Sweta Jadhav</h3><div class="role">Product Lead</div><p class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quo optio expedita autem nobis iusto nesciunt. Quasi sunt maiores asperiores.</p><div class="tags"><span class="tag">Back-End </span></div></div>
-                            </div>
-                            <div class="card">
-                                <img class="avatar" src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=600">
-                                <div class="meta"><h3 class="name">Pratik</h3><div class="role">Product Lead</div><p class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, id alias molestias tempora animi sint.</p><div class="tags"><span class="tag">Product UX</span></div></div>
-                            </div>
-                            <div class="card">
-                                <img class="avatar" src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=600">
-                                <div class="meta"><h3 class="name">Arjun</h3><div class="role">Product Lead</div><p class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam adipisci debitis reiciendis asperiores vitae impedit?</p><div class="tags"><span class="tag">React Special</span></div></div>
-                            </div>
-                            <div class="card">
-                                <img class="avatar" src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=600">
-                                <div class="meta"><h3 class="name">Mansi</h3><div class="role">Product Lead</div><p class="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore quos nesciunt, repellat quam incidunt facilis.</p><div class="tags"><span class="tag">Product Marketing</span></div></div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    <button class="button" id="prevBtan">◀</button>
-                    <button class="button" id="nextBtan">▶</button>
-                    </div>
-
-
+        </div>
 
 
         </section>
        
 
-        <section class="contact" id="contactt">
+        <section class="contact  fade-in-element " id="contactt">
            
 
             <div class="form">
@@ -306,7 +334,7 @@
                 </form>
             </div>
             
-            <div class="hire-card">
+            <div class="hire-card  fade-in-element ">
                 <h2>Let's Work Togather</h2>
                 <p>Looking for a passionate and skilled professional to bring your ideas to life? You're in the right place! With expertise in  Web development, content creation. I am dedicated to delivering high-quality work that meets and exceeds expectations. I take pride in my attention to detail, problem-solving abilities, and commitment to creating impactful solutions. Whether it’s a small project or a large-scale collaboration, I’m ready to help you achieve your goals. Let’s connect and make something amazing together!!</p>
                 <h6></h6><i class="fa-solid fa-phone-volume"></i>  +91 9834985596 </h6> <br> <br>
@@ -336,6 +364,114 @@
 
 
     <script src="./assets/main.js"></script>
-    
+
+
+    <script>
+        const wrapper = document.getElementById('projectSliderWrapper');
+        const track = document.getElementById('projectSliderTrack');
+        
+        let currentIndex = 0;
+        let startX = 0;
+        let startY = 0;
+        let currentX = 0;
+        let isDragging = false;
+        let isScrolling = false;
+        let startTranslate = 0;
+
+        function getVisibleCardsCount() {
+            if (window.innerWidth <= 640) return 1;
+            if (window.innerWidth <= 1024) return 2;
+            return 3;
+        }
+
+        function getTrackPosition() {
+            const cards = document.querySelectorAll('.project-card');
+            if (cards.length === 0) return 0;
+            const cardWidth = cards[0].getBoundingClientRect().width;
+            const gap = parseFloat(window.getComputedStyle(track).gap) || 0;
+            return -currentIndex * (cardWidth + gap);
+        }
+
+        function updateSliderPosition() {
+            track.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+            track.style.transform = `translateX(${getTrackPosition()}px)`;
+        }
+
+        wrapper.addEventListener('touchstart', touchStart, { passive: false });
+        wrapper.addEventListener('touchmove', touchMove, { passive: false });
+        wrapper.addEventListener('touchend', touchEnd);
+        
+        wrapper.addEventListener('mousedown', touchStart);
+        wrapper.addEventListener('mousemove', touchMove);
+        wrapper.addEventListener('mouseup', touchEnd);
+        wrapper.addEventListener('mouseleave', () => { if(isDragging) touchEnd(); });
+
+        function touchStart(event) {
+            isDragging = true;
+            isScrolling = false;
+            
+            const isMouse = event.type.includes('mouse');
+            startX = isMouse ? event.pageX : event.touches[0].clientX;
+            startY = isMouse ? event.pageY : event.touches[0].clientY;
+            
+            currentX = startX;
+            startTranslate = getTrackPosition();
+            track.style.transition = 'none'; 
+        }
+
+        function touchMove(event) {
+            if (!isDragging || isScrolling) return;
+
+            const isMouse = event.type.includes('mouse');
+            currentX = isMouse ? event.pageX : event.touches[0].clientX;
+            const currentY = isMouse ? event.pageY : event.touches[0].clientY;
+
+            const deltaX = currentX - startX;
+            const deltaY = currentY - startY;
+
+            if (!isMouse && Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 10) {
+                isScrolling = true;
+                isDragging = false;
+                updateSliderPosition();
+                return;
+            }
+
+            if (!isMouse) {
+                event.preventDefault(); 
+            }
+
+            track.style.transform = `translateX(${startTranslate + deltaX}px)`;
+        }
+
+        function touchEnd() {
+            if (!isDragging) return;
+            isDragging = false;
+            
+            const cards = document.querySelectorAll('.project-card');
+            if (cards.length === 0) return;
+            
+            const cardWidth = cards[0].getBoundingClientRect().width;
+            const gap = parseFloat(window.getComputedStyle(track).gap) || 0;
+            const maxIndex = cards.length - getVisibleCardsCount();
+
+            const movedBy = currentX - startX;
+            const threshold = (cardWidth + gap) * 0.15; 
+
+            if (movedBy < -threshold && currentIndex < maxIndex) {
+                currentIndex++;
+            } else if (movedBy > threshold && currentIndex > 0) {
+                currentIndex--;
+            }
+
+            updateSliderPosition();
+        }
+
+        window.addEventListener('resize', () => {
+            track.style.transition = 'none';
+            track.style.transform = `translateX(${getTrackPosition()}px)`;
+        });
+
+        updateSliderPosition();
+    </script>
 </body>
 </html>
