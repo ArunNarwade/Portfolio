@@ -57,21 +57,51 @@ document.addEventListener("DOMContentLoaded", function() {
 // ==========================================
 // 3. MOBILE NAVIGATION MENU LOGIC
 // ==========================================
-const toggle = document.getElementById('menu-toggle');
-const navbar = document.getElementById('navbar');
-const navLinks = document.querySelectorAll('.nav-link');
 
-if (toggle && navbar) {
-    toggle.addEventListener('click', () => {
-        navbar.classList.toggle('active');
+
+
+
+
+
+// const toggle = document.getElementById('menu-toggle');
+// const navbar = document.getElementById('navbar');
+// const navLinks = document.querySelectorAll('.nav-link');
+
+// if (toggle && navbar) {
+//     toggle.addEventListener('click', () => {
+//         navbar.classList.toggle('active');
+//     });
+
+//     navLinks.forEach(link => {
+//         link.addEventListener('click', () => {
+//             navbar.classList.remove('active');
+//         });
+//     });
+// }
+
+
+  (() => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const navbar = document.getElementById("navbar");
+
+    if (!menuToggle || !navbar) return; // Safeguard if elements aren't ready
+
+    // Toggle menu state on button click
+    menuToggle.addEventListener("click", () => {
+        menuToggle.classList.toggle("active");
+        navbar.classList.toggle("active");
     });
 
+    // Automatically collapse navigation menu once an individual link item is clicked
+    const navLinks = navbar.querySelectorAll(".nav-link");
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navbar.classList.remove('active');
+        link.addEventListener("click", () => {
+            menuToggle.classList.remove("active");
+            navbar.classList.remove("active");
         });
     });
-}
+})();
+
 
 // ==========================================
 // 4. INFINITE CAROUSEL SLIDER ENGINE
@@ -84,46 +114,7 @@ if (toggle && navbar) {
     const cards = Array.from(track.children);
 
     // Clone initial cards to set up seamless loop sequence
-    cards.forEach(c => track.appendChild(c.cloneNode(true)));
 
-    let autoSlide = true;
-
-    function getCardWidth() {
-        const firstCard = track.querySelector(".card");
-        return firstCard ? firstCard.offsetWidth + gap : 0;
-    }
-
-    function slideNext() {
-        const firstCard = track.querySelector(".card");
-        const cardWidth = getCardWidth();
-        if (!firstCard || cardWidth === 0) return;
-
-        track.style.transition = "transform 0.5s ease";
-        track.style.transform = `translateX(-${cardWidth}px)`;
-
-        track.addEventListener("transitionend", function handler() {
-            track.style.transition = "none";
-            track.appendChild(firstCard);
-            track.style.transform = "translateX(0)";
-            track.removeEventListener("transitionend", handler);
-        }, { once: true });
-    }
-
-    function slidePrev() {
-        const cardsAll = track.querySelectorAll(".card");
-        const lastCard = cardsAll[cardsAll.length - 1];
-        const cardWidth = getCardWidth();
-        if (!lastCard || cardWidth === 0) return;
-
-        track.style.transition = "none";
-        track.insertBefore(lastCard, track.firstChild);
-        track.style.transform = `translateX(-${cardWidth}px)`;
-
-        requestAnimationFrame(() => {
-            track.style.transition = "transform 0.5s ease";
-            track.style.transform = "translateX(0)";
-        });
-    }
 
     // Interval driver logic
     let interval = setInterval(() => {

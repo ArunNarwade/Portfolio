@@ -1,453 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Project Showcase</title>
-    <style>
-     /* ==========================================
-   SERVICES GRID MATRIX
-   ========================================== */
-.services-section {
-  width: 100%;
-  max-width: 1100px;
-  margin: 6rem auto;
-  padding: 0 1.5rem;
-  box-sizing: border-box;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* --- Base Desktop Styling Framework --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background-color: #1f242d; /* Adjust color to match your portfolio theme */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    box-sizing: border-box;
 }
 
-.services-header {
-  margin-bottom: 4rem;
-  text-align: left;
+.logo {
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
 }
 
-.services-title {
-  font-size: 2.25rem;
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  background: linear-gradient(to right, #ffffff, #94a3b8);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.navbar {
+    display: flex;
+    gap: 35px;
 }
 
-.services-subtitle {
-  color: #64748b;
-  margin-top: 0.5rem;
-  font-size: 0.95rem;
+.navbar .nav-link {
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: .3s;
 }
 
-/* THE IMPRESSIVE DISPLAY GRID */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+/* --- Dynamic Toggle Button Construction --- */
+.menu-toggle {
+    display: none; /* Hidden on desktop screens */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
 }
 
-/* PREMIUM SERVICE CARD OBJECT */
-.service-card {
-  position: relative;
-  background: linear-gradient(180deg, rgba(17, 24, 39, 0.7) 0%, rgba(11, 15, 25, 0.9) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 24px;
-  padding: 2.5rem 2rem;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  display: flex;
-  flex-direction: column;
+.menu-toggle span {
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
 }
 
-/* Decorative backdrop glow indicator */
-.service-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, transparent, #4f46e5, transparent);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
+/* --- Mobile Responsiveness (Under 768px Viewports) --- */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex; /* Displays button on mobile layouts */
+    }
 
-/* Card Hover States */
-.service-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(99, 102, 241, 0.3);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 30px -5px rgba(79, 70, 229, 0.15);
-}
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #1f242d;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        
+        /* Animation properties using max-height */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
 
-.service-card:hover::before {
-  opacity: 1;
-}
+    /* Active state injected by JS to roll the links down smoothly */
+    .navbar.active {
+        max-height: 350px; 
+        padding: 25px 0;
+    }
 
-/* ICON CONTAINER WRAPPER */
-.service-icon-wrapper {
-  width: 56px;
-  height: 56px;
-  background: rgba(30, 27, 75, 0.5);
-  border: 1px solid rgba(129, 140, 248, 0.2);
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2rem;
-  color: #818cf8;
-  transition: transform 0.4s ease, background 0.4s ease;
+    /* --- Morphing Hamburger into an 'X' symbol --- */
+    /* Top line morph */
+    .menu-toggle.active span:nth-child(1) {
+        transform: translateY(8.5px) rotate(45deg);
+    }
+    /* Hide the center line */
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    /* Bottom line morph */
+    .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-8.5px) rotate(-45deg);
+    }
 }
-
-.service-card:hover .service-icon-wrapper {
-  transform: scale(1.1) rotate(4deg);
-  background: #1e1b4b;
-  color: #a5b4fc;
-  border-color: rgba(129, 140, 248, 0.5);
-}
-
-.service-icon-wrapper svg {
-  width: 26px;
-  height: 26px;
-}
-
-/* TYPOGRAPHY */
-.service-card-title {
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: #f8fafc;
-  margin-bottom: 0.85rem;
-  letter-spacing: -0.02em;
-}
-
-.service-card-desc {
-  color: #94a3b8;
-  font-size: 0.92rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
-  flex-grow: 1;
-}
-
-/* CLEAN VALUE LIST PILLS */
-.service-features {
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
-  padding-top: 1.5rem;
-}
-
-.service-feature-item {
-  font-size: 0.82rem;
-  color: #64748b;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: color 0.3s ease;
-}
-
-.service-card:hover .service-feature-item {
-  color: #94a3b8;
-}
-
-.service-feature-item::before {
-  content: '✦';
-  color: #818cf8;
-  font-size: 0.75rem;
-}
-
-/* RESPONSIVE RESPONSIVENESS MATRIX BREAKPOINTS */
-@media (max-width: 968px) {
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr); /* Forms 2 column array grid cleanly */
-  }
-}
-
-@media (max-width: 640px) {
-  .services-grid {
-    grid-template-columns: 1fr; /* Full single rows layout block stack on mobile touch views */
-    gap: 1.5rem;
-  }
-  .service-card {
-    padding: 2rem 1.5rem;
-  }
-}
-    </style>
+  </style>
 </head>
 <body>
-
-   <section class="services-section">
-    <div class="services-header">
-        <h2 class="services-title">Expertise & Services</h2>
-        <p class="services-subtitle">High-performance digital engineering executed with modern production stacks.</p>
-    </div>
-
-    <div class="services-grid">
-        
-        <!-- SERVICE CARD 1: FRONTEND -->
-        <article class="service-card">
-            <div class="service-icon-wrapper">
-                <!-- Clean Inline Modern SVG Developer Icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
-                </svg>
+     <header class="header">
+            <a href="#" class="logo">PortFolio..</a>
+             <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <h3 class="service-card-title">Front-end Development</h3>
-            <p class="service-card-desc">Building responsive web user interfaces optimized for speed, semantic rendering accessibility, and pixel-precise conversion transitions.</p>
-            <ul class="services-features">
-                <li class="service-feature-item">React / Next.js Architecture</li>
-                <li class="service-feature-item">Tailwind CSS Custom Engineering</li>
-                <li class="service-feature-item">Fluid Core Logic Web Interactions</li>
-            </ul>
-        </article>
+      <nav class="navbar" id="navbar">
+        <a href="#homee" style="--i:1" class="nav-link">Home</a>
+        <a href="#about" style="--i:2" class="nav-link">About</a>
+        <a href="#SRVC" style="--i:3" class="nav-link">Services</a>
+        <a href="#skillss" style="--i:4" class="nav-link">Skills</a>
+        <a href="#contactt" style="--i:5" class="nav-link">Contact</a>
+      </nav>
+    </header>
+ <script>
+  (() => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const navbar = document.getElementById("navbar");
 
-        <!-- SERVICE CARD 2: BACKEND/AUTOMATION -->
-        <article class="service-card">
-            <div class="service-icon-wrapper">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3V5.25m3 9c0 .517.13 1.003.361 1.432m12.778-1.432a3 3 0 013-3V5.25m-3 9c0 .517-.13 1.003-.36 1.432m-12.058 0A4.498 4.498 0 0012 18.75a4.498 4.498 0 004.161-2.924m-12.058 0A1.5 1.5 0 004.5 18a2.25 2.25 0 002.25 2.25h10.5A2.25 2.25 0 0019.5 18a1.5 1.5 0 00-1.398-1.174" />
-                </svg>
-            </div>
-            <h3 class="service-card-title">Backend & Systems</h3>
-            <p class="service-card-desc">Engineered APIs, schema distributions, and automated structural processing servers designed to run safely under heavy request flows.</p>
-            <ul class="services-features">
-                <li class="service-feature-item">Node.js Framework Environments</li>
-                <li class="service-feature-item">Secure RESTful & GraphQL APIs</li>
-                <li class="service-feature-item">Database Architecture Handling</li>
-            </ul>
-        </article>
+    if (!menuToggle || !navbar) return; // Safeguard if elements aren't ready
 
-        <!-- SERVICE CARD 3: CONTENT & BRANDING -->
-        <article class="service-card">
-            <div class="service-icon-wrapper">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 20.25h12m-7.5-3v3m3-3v3m-10.125-3h17.25c.621 0 1.125-.504 1.125-1.125V4.875c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125z" />
-                </svg>
-            </div>
-            <h3 class="service-card-title">Content & Strategy</h3>
-            <p class="service-card-desc">Producing deeply engaging technical videos, layout walkthroughs, and developer content designed to communicate features cleanly.</p>
-            <ul class="services-features">
-                <li class="service-feature-item">Video Editing & Technical Reviews</li>
-                <li class="service-feature-item">Developer Brand Direction Consulting</li>
-                <li class="service-feature-item">Product Documentation Engineering</li>
-            </ul>
-        </article>
+    // Toggle menu state on button click
+    menuToggle.addEventListener("click", () => {
+        menuToggle.classList.toggle("active");
+        navbar.classList.toggle("active");
+    });
 
-    </div>
-</section>
+    // Automatically collapse navigation menu once an individual link item is clicked
+    const navLinks = navbar.querySelectorAll(".nav-link");
+    navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            menuToggle.classList.remove("active");
+            navbar.classList.remove("active");
+        });
+    });
+})();
+ </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-:root{
-    --gap:1rem;
-    --cards-per-view:3;
-}
-
-.wrap{
-max-width:1400px;
-/* height: 500px; */
-margin:0 auto;
-position:relative;
-text-align: center;
-}
-.wrap h1{
-    margin: 20px;
-}
-.carousel{
-    position:relative;}
-.viewport{
-    overflow:hidden;}
-.track{
-    display:flex;
-    gap:var(--gap);}
-.card {
-  flex: 0 0 calc((100% - (var(--cards-per-view) - 1) * var(--gap)) / var(--cards-per-view));
-  background: rgba(32, 178, 171, 0.285); 
-  color:white;
-  border-radius: 12px;
-  padding: 18px;
-  min-width: 350px;
-  height: 270px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  border: 3px solid #000; 
-  transition: transform .3s, box-shadow .3s;
-
-
-  box-shadow: 0 10px 20px rgba(225, 57, 233, 0.4);
-}
-.card:hover{
-    background-color: rgb(143, 10, 10);
-    transform: scale(1.05);
-}
-
-.avatar{
-    width:120px;
-    height:120px;
-    border-radius:12px;
-    object-fit:cover;
-   }
-
-
-.button{
-    position:absolute;
-    top:50%;
-    transform:translateY(-20%);
-    border:0;
-    padding:12px 14px;
-    border-radius:50%;
-    background:transparent;
-    color:#fff;
-    cursor:pointer;
-    z-index:10;}
-
-#prevBtan{left:-50px ;} #nextBtan{right:-50px;}
- .meta{flex:1}
- .button{background-color: #8ea088;
-width: 40px;
-}
-
-.name {
-   font-family: "Epunda Slab", serif;
-  font-weight: 900;
-  margin: 0 0 4px;
-  font-size: 34px;
-  font-weight: 600;
-  background: linear-gradient(90deg, #7c3aed, #7ae82c, black);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-}
-
-  .role{
-    font-family: "Montserrat", sans-serif;
-    margin:0;
-    color: #000;
-    /* color:var(--muted); */
-    font-size:16px;
-    font-weight: 600;
-    }
-  .desc{
-    margin-top:8px;
-    color:#f4f8ff;
-    font-size:18px}
-  .tags{
-    display:flex;
-    gap:8px;
-    margin-top:10px
-    }
-
-  .tag{
-    font-family: "Montserrat", serif;
-    letter-spacing: 2px;
-    font-size:15px;
-    padding:6px 8px;
-    border-radius:999px;
-    background:rgba(234, 120, 172, 0.823);
-    color:var(--accent);
-    font-weight:400 ;
-     width: 120px;}
-
-
-
-
-<div class="container">
-            <h1 class="sub-title">My <span>Projects</span></h1>
-        
-            <div class="projects-container">
-                <div class="project-card">
-                    
-                    <div class="card-front" id="rest">
-                        <img src="./assets/img/rest.webp" alt="Project 1">
-                        
-                        <!-- <h3>Project 1</h3> -->
-                    </div>
-                    <div class="card-back">
-                        <div class="info">
-                            <h4>Food Web</h4>
-                            <p>the wesite for foodies , its all about to test</p>
-                            <a href="https://arunnarwade.github.io/food-web/">View Project</a>
-                        </div>
-                    </div>
-                </div>
-        
-                <div class="project-card">
-                    <div class="card-front">
-                        <img src="./assets/img/bullet.jpeg" alt="Project 2">
-                        <!-- <h3>Project 2</h3> -->
-                    </div>
-                    <div class="card-back">
-                        <div class="info">
-                            <h4>Royal Enfield</h4>
-                            <p>A Single page website for royal enfield lover</p>
-                            <a href="#">View Project</a>
-                        </div>
-                    </div>
-                </div>
-        
-                <div class="project-card">
-                    <div class="card-front">
-                        <img src="./assets/img/5431548_839d_3.webp" alt="Project 3">
-                        <!-- <h3>Project 3</h3> -->
-                    </div>
-                    <div class="card-back">
-                        <div class="info">
-                            <h4>Project 3 Details</h4>
-                            <p>This is a detailed description of Project 3.</p>
-                            <a href="#">View Project</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-           </div>
-
-
-
-
-
-
-
-           
-
-            <!-- <div class="wrap">
-                    <h1>Team Works With me..</h1>
-                    <div class="carousel">
-                    <div class="viewport">
-                        <div class="track" id="track">
-                            <div class="card">
-                                <img class="avatar" src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=600">
-                                <div class="meta"><h1 class="name">Bhagwan</h1><div class="role"><h3>Product Lead</h3></div><p class="desc">Lorem ipsum dolor sit, sed sint libero itaque reiciendis debitis?</p><div class="tags"><span class="tag">Web Developer</span></div></div>
-                            </div>
-                            <div class="card">
-                                <img class="avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600">
-                                <div class="meta"><h3 class="name"> Sweta Jadhav</h3><div class="role">Product Lead</div><p class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente quo optio expedita autem nobis iusto nesciunt. Quasi sunt maiores asperiores.</p><div class="tags"><span class="tag">Back-End </span></div></div>
-                            </div>
-                            <div class="card">
-                                <img class="avatar" src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=600">
-                                <div class="meta"><h3 class="name">Pratik</h3><div class="role">Product Lead</div><p class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, id alias molestias tempora animi sint.</p><div class="tags"><span class="tag">Product UX</span></div></div>
-                            </div>
-                            <div class="card">
-                                <img class="avatar" src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?q=80&w=600">
-                                <div class="meta"><h3 class="name">Arjun</h3><div class="role">Product Lead</div><p class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam adipisci debitis reiciendis asperiores vitae impedit?</p><div class="tags"><span class="tag">React Special</span></div></div>
-                            </div>
-                            <div class="card">
-                                <img class="avatar" src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=600">
-                                <div class="meta"><h3 class="name">Aad</h3><div class="role">Product Lead</div><p class="desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore quos nesciunt, repellat quam incidunt facilis.</p><div class="tags"><span class="tag">Product Marketing</span></div></div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    <button class="button" id="prevBtan">◀</button>
-                    <button class="button" id="nextBtan">▶</button>
-                    </div> -->
-
-

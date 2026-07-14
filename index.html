@@ -26,14 +26,14 @@
       <nav class="navbar" id="navbar">
         <a href="#homee" style="--i:1" class="nav-link">Home</a>
         <a href="#about" style="--i:2" class="nav-link">About</a>
-        <a href="#service" style="--i:3" class="nav-link">Services</a>
+        <a href="#SRVC" style="--i:3" class="nav-link">Services</a>
         <a href="#skillss" style="--i:4" class="nav-link">Skills</a>
         <a href="#contactt" style="--i:5" class="nav-link">Contact</a>
       </nav>
     </header>
 
     <!-- //////HEADERRRRRR -->
-    <section class="home " id="homee">
+    <section class="home fade-in-element" id="homee">
         <div class="home-content" id="home">
             <h3>Hello, It's Me</h3>
             <h1>Arun Narwade</h1>
@@ -74,7 +74,10 @@
     <!-- //SECTIONNNNNNNNNNNNNN 3 -->
 
 
-<section class="services-section fade-in-element ">
+<section class="services-section fade-in-element " id="SRVC">
+    <div class="project-section-header">
+        <h2 class="project-section-title">Services we Provide</h2>
+    </div>
     <div class="services-header">
         <!-- <h2 class="services-title">Expertise & Services</h2>
         <p class="services-subtitle">High-performance digital engineering executed with modern production stacks.</p> -->
@@ -145,7 +148,7 @@
 
 
     <!-- //SECTIONNNNNNNN 4 -->
-    <h1 class="sub-title ">My <span>Skills</span></h1>
+    <!-- <h1 class="sub-title ">My <span>Skills</span></h1> -->
     <section id="skillss" class="skillls fade-in-element">
         <div class="skills-container">
             <h2>Technical Skills</h2>
@@ -231,87 +234,95 @@
     
            
         </div>
-        
-        <section class="projects fade-in-element ">
-                <div class="project-section-header">
-            <h2 class="project-section-title">My Work</h2>
-            <p class="project-section-subtitle">From front-end interactions to robust architectures: a look at my recent builds.</p>
+
+
+
+
+<section class="projects fade-in-element">
+    <div class="project-section-header">
+        <h2 class="project-section-title">My Work</h2>
+        <p class="project-section-subtitle">From front-end interactions to robust architectures: a look at my recent builds.</p>
+    </div>
+
+    <div class="project-slider-wrapper" id="projectSliderWrapper">
+        <div class="project-slider-track" id="projectSliderTrack">
+            
+            <!-- PROJECT CARD 1 -->
+            <article class="project-card fade-in-element">
+                <div class="project-visual-box">
+                    <img src="assets/img/photography.png" alt="Screenshot of Nova Crypt App" class="project-screenshot">
+                </div>
+                <div class="project-content-box">
+                    <div class="project-meta">
+                        <span class="project-tech-tag">HTML 5</span>
+                        <span class="project-tech-tag">JS</span>
+                    </div>
+                    <h3 class="project-title">Photo Graphy</h3>
+                    <p class="project-description">A modern, responsive photography portfolio showcasing galleries, services, and smooth interactive animations.</p>
+                    <a href="https://arunnarwade.github.io/PhotoGraphy/" class="project-action-link">Explore Project<span>→</span></a>
+                </div>
+            </article>
+
+            <!-- PROJECT CARD 2 -->
+            <article class="project-card fade-in-element">
+                <div class="project-visual-box">
+                    <img src="./assets/img/Foodweb.png" alt="Screenshot of Synthetix Workflows" class="project-screenshot">
+                </div>
+                <div class="project-content-box">
+                    <div class="project-meta">
+                        <span class="project-tech-tag">HTML:5</span>
+                        <span class="project-tech-tag">CSS</span>
+                    </div>
+                    <h3 class="project-title">Food site</h3>
+                    <p class="project-description">A responsive food ordering website featuring an elegant UI, interactive menus, and a seamless user experience.</p>
+                    <a href="https://arunnarwade.github.io/food-web/" class="project-action-link">Explore Project <span>→</span></a>
+                </div>
+            </article>
+
+            <!-- PROJECT CARD 3 -->
+            <article class="project-card fade-in-element">
+                <div class="project-visual-box">
+                    <img src="./assets/img/Finance.png" alt="Screenshot of Zenith Wallet UI" class="project-screenshot">
+                </div>
+                <div class="project-content-box">
+                    <div class="project-meta">
+                        <span class="project-tech-tag">React Js</span>
+                        <span class="project-tech-tag">API</span>
+                    </div>
+                    <h3 class="project-title">Finance Tracker</h3>
+                    <p class="project-description">A React-based finance tracker for managing income, expenses, and budgets with an intuitive dashboard.</p>
+                    <a href="https://arunnarwade.github.io/Finance/" class="project-action-link">Explore Project <span>→</span></a>
+                </div>
+            </article>
+
+            <!-- PROJECT CARD 4 -->
+            <article class="project-card fade-in-element">
+                <div class="project-visual-box">
+                    <img src="./assets/img/Infinova.png" alt="Screenshot of Helix Search Platform" class="project-screenshot">
+                </div>
+                <div class="project-content-box">
+                    <div class="project-meta">
+                        <span class="project-tech-tag">React.js</span>
+                        <span class="project-tech-tag">--</span>
+                    </div>
+                    <h3 class="project-title">Infinova Consaltants</h3>
+                    <p class="project-description">Contributed to the Infinova Consultants website by developing responsive React components and enhancing the user interface.</p>
+                    <a href="https://www.infinovaglobal.org/" class="project-action-link">Explore Projects <span>→</span></a>
+                </div>
+            </article>
+
         </div>
+    </div>
 
-        <div class="project-slider-wrapper" id="projectSliderWrapper">
-            <div class="project-slider-track" id="projectSliderTrack">
-                
-                <!-- PROJECT CARD 1 -->
-                <article class="project-card fade-in-element">
-                    <div class="project-visual-box">
-                        <!-- Swap src value placeholder below with your project website screenshot link -->
-                        <img src="assets/img/photography.png" alt="Screenshot of Nova Crypt App" class="project-screenshot">
-                    </div>
-                    <div class="project-content-box">
-                        <div class="project-meta">
-                            <span class="project-tech-tag">HTML 5</span>
-                            <span class="project-tech-tag">JS</span>
-                        </div>
-                        <h3 class="project-title">Photo Graphy</h3>
-                        <p class="project-description">A modern, responsive photography portfolio showcasing galleries, services, and smooth interactive animations.</p>
-                        <a href="https://arunnarwade.github.io/PhotoGraphy/" class="project-action-link">Explore Project<span>→</span></a>
-                    </div>
-                </article>
+    <!-- Navigation Dots (One per project card) -->
+    <div class="dots-container">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</section>
 
-                <!-- PROJECT CARD 2 -->
-                <article class="project-card fade-in-element">
-                    <div class="project-visual-box">
-                        <img src="./assets/img/Foodweb.png" alt="Screenshot of Synthetix Workflows" class="project-screenshot">
-                    </div>
-                    <div class="project-content-box">
-                        <div class="project-meta">
-                            <span class="project-tech-tag">HTML:5</span>
-                            <span class="project-tech-tag">CSS</span>
-                        </div>
-                        <h3 class="project-title">Food site</h3>
-                        <p class="project-description">A responsive food ordering website featuring an elegant UI, interactive menus, and a seamless user experience.</p>
-                        <a href="https://arunnarwade.github.io/food-web/" class="project-action-link">Explore Project <span>→</span></a>
-                    </div>
-                </article>
-
-                <!-- PROJECT CARD 3 -->
-                <article class="project-card fade-in-element">
-                    <div class="project-visual-box">
-                        <img src="./assets/img/Finance.png" alt="Screenshot of Zenith Wallet UI" class="project-screenshot">
-                    </div>
-                    <div class="project-content-box">
-                        <div class="project-meta">
-                            <span class="project-tech-tag">React Js</span>
-                            <span class="project-tech-tag">API</span>
-                        </div>
-                        <h3 class="project-title">Finance Tracker</h3>
-                        <p class="project-description">A React-based finance tracker for managing income, expenses, and budgets with an intuitive dashboard.</p>
-                        <a href="https://arunnarwade.github.io/Finance/" class="project-action-link">Explore Project <span>→</span></a>
-                    </div>
-                </article>
-
-                <!-- PROJECT CARD 4 -->
-                <article class="project-card fade-in-element">
-                    <div class="project-visual-box">
-                        <img src="./assets/img/Infinova.png" alt="Screenshot of Helix Search Platform" class="project-screenshot">
-                    </div>
-                    <div class="project-content-box">
-                        <div class="project-meta">
-                            <span class="project-tech-tag">React.js</span>
-                            <span class="project-tech-tag">--</span>
-                        </div>
-                        <h3 class="project-title">Infinova Consaltants</h3>
-                        <p class="project-description">Contributed to the Infinova Consultants website by developing responsive React components and enhancing the user interface.</p>
-                        <a href="https://www.infinovaglobal.org/" class="project-action-link">Explore Projects <span>→</span></a>
-                    </div>
-                </article>
-
-            </div>
-        </div>
-
-
-        </section>
-       
 
         <section class="contact  fade-in-element " id="contactt">
            
